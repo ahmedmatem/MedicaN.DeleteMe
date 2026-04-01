@@ -1,0 +1,1 @@
+Scaffold-DbContext -Connection "Server=.\sqlexpress;Database=HealthNDb;Integrated Security=True;TrustServerCertificate=True" -Provider Microsoft.EntityFrameworkCore.SqlServer -OutputDir Data/Models -ContextDir Data
