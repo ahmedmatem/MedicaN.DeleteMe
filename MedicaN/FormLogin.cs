@@ -1,5 +1,6 @@
 using MedicaN.Data;
 using MedicaN.Data.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -28,7 +29,7 @@ namespace MedicaN
                 switch (user.Role.RoleName)
                 {
                     case "Admin":
-                        MessageBox.Show("Go to Admin panel.");
+                        ShowAdminPatients(user);
                         break;
                     case "Doctor":
                         MessageBox.Show("Go to Doctor panel.");
@@ -40,13 +41,21 @@ namespace MedicaN
             }
         }
 
+        private void ShowAdminPatients(User user)
+        {
+            throw new NotImplementedException();
+        }
+
         private User? Login(string username, string password)
         {
             using (var context = new HealthNdbContext())
             {
-                return context.Users.FirstOrDefault(u =>
-                    u.Username == username &&
-                    u.PasswordHash == HashPassword(password));
+                return context.Users
+                    .Include(u => u.Role)
+                    .FirstOrDefault(u =>
+                        u.Username == username &&
+                        u.PasswordHash == HashPassword(password)
+                    );
             }
         }
 
