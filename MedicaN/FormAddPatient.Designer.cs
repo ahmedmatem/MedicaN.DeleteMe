@@ -28,11 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
+            textBoxName = new TextBox();
+            textBoxLastName = new TextBox();
+            textBoxPin = new TextBox();
+            textBoxPhone = new TextBox();
             labelName = new Label();
             labelLastName = new Label();
             labelPin = new Label();
@@ -40,42 +39,36 @@
             labelPhone = new Label();
             buttonAdd = new Button();
             buttonCancel = new Button();
+            comboBoxGender = new ComboBox();
             SuspendLayout();
             // 
-            // textBox1
+            // textBoxName
             // 
-            textBox1.Location = new Point(49, 49);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(187, 23);
-            textBox1.TabIndex = 0;
+            textBoxName.Location = new Point(49, 49);
+            textBoxName.Name = "textBoxName";
+            textBoxName.Size = new Size(187, 23);
+            textBoxName.TabIndex = 0;
             // 
-            // textBox2
+            // textBoxLastName
             // 
-            textBox2.Location = new Point(49, 117);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(187, 23);
-            textBox2.TabIndex = 1;
+            textBoxLastName.Location = new Point(49, 117);
+            textBoxLastName.Name = "textBoxLastName";
+            textBoxLastName.Size = new Size(187, 23);
+            textBoxLastName.TabIndex = 1;
             // 
-            // textBox3
+            // textBoxPin
             // 
-            textBox3.Location = new Point(49, 187);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(187, 23);
-            textBox3.TabIndex = 2;
+            textBoxPin.Location = new Point(49, 187);
+            textBoxPin.Name = "textBoxPin";
+            textBoxPin.Size = new Size(187, 23);
+            textBoxPin.TabIndex = 2;
             // 
-            // textBox4
+            // textBoxPhone
             // 
-            textBox4.Location = new Point(274, 49);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(174, 23);
-            textBox4.TabIndex = 3;
-            // 
-            // textBox5
-            // 
-            textBox5.Location = new Point(274, 117);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(174, 23);
-            textBox5.TabIndex = 4;
+            textBoxPhone.Location = new Point(274, 117);
+            textBoxPhone.Name = "textBoxPhone";
+            textBoxPhone.Size = new Size(174, 23);
+            textBoxPhone.TabIndex = 4;
             // 
             // labelName
             // 
@@ -131,6 +124,7 @@
             buttonAdd.TabIndex = 10;
             buttonAdd.Text = "Добавяне";
             buttonAdd.UseVisualStyleBackColor = true;
+            buttonAdd.Click += buttonAdd_Click;
             // 
             // buttonCancel
             // 
@@ -142,11 +136,21 @@
             buttonCancel.Text = "Отказ";
             buttonCancel.UseVisualStyleBackColor = true;
             // 
+            // comboBoxGender
+            // 
+            comboBoxGender.FormattingEnabled = true;
+            comboBoxGender.Items.AddRange(new object[] { "мъж", "жена" });
+            comboBoxGender.Location = new Point(274, 49);
+            comboBoxGender.Name = "comboBoxGender";
+            comboBoxGender.Size = new Size(174, 23);
+            comboBoxGender.TabIndex = 12;
+            // 
             // FormAddPatient
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(513, 316);
+            Controls.Add(comboBoxGender);
             Controls.Add(buttonCancel);
             Controls.Add(buttonAdd);
             Controls.Add(labelPhone);
@@ -154,28 +158,25 @@
             Controls.Add(labelLastName);
             Controls.Add(labelName);
             Controls.Add(labelPin);
-            Controls.Add(textBox5);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(textBoxPhone);
+            Controls.Add(textBoxPin);
+            Controls.Add(textBoxLastName);
+            Controls.Add(textBoxName);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FormAddPatient";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Добавяне на пациент";
-            Load += FormAddPatient_Load;
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox5;
+        private TextBox textBoxName;
+        private TextBox textBoxLastName;
+        private TextBox textBoxPin;
+        private TextBox textBoxPhone;
         private Label labelName;
         private Label labelLastName;
         private Label labelPin;
@@ -183,5 +184,6 @@
         private Label labelPhone;
         private Button buttonAdd;
         private Button buttonCancel;
+        private ComboBox comboBoxGender;
     }
 }

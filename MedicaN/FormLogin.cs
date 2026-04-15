@@ -43,7 +43,12 @@ namespace MedicaN
 
         private void ShowAdminPatients(User user)
         {
-            throw new NotImplementedException();
+            // Open the admin patients form and pass the user information if needed
+            var adminPatientsForm = new FormAdminPatients(user);
+            adminPatientsForm.Show();
+
+            // Close login form
+            Hide();
         }
 
         private User? Login(string username, string password)
