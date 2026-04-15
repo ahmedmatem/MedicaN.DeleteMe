@@ -124,6 +124,7 @@
             buttonEditPatient.TabIndex = 3;
             buttonEditPatient.Text = "Редактирай пациент";
             buttonEditPatient.UseVisualStyleBackColor = true;
+            buttonEditPatient.Click += buttonEditPatient_Click;
             // 
             // buttonDeletePatient
             // 

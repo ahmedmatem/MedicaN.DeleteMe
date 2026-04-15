@@ -49,14 +49,14 @@ namespace MedicaN
         private void buttonAddPatient_Click(object sender, EventArgs e)
         {
             var addPatientForm = new FormAddPatient();
-            if(addPatientForm.ShowDialog() == DialogResult.OK)
+            if (addPatientForm.ShowDialog() == DialogResult.OK)
             {
                 Patient? newPatient = addPatientForm.NewPatient;
-                if(newPatient is not null)
+                if (newPatient is not null)
                 {
                     SavePatientInDb(newPatient);
                     LoadPatients();
-                }                
+                }
             }
         }
 
@@ -66,6 +66,19 @@ namespace MedicaN
             {
                 context.Patients.Add(newPatient);
                 context.SaveChanges();
+            }
+        }
+
+        private void buttonEditPatient_Click(object sender, EventArgs e)
+        {
+            var selectedPatient = (Patient)patientBindingSource.Current;
+            if(selectedPatient is not null)
+            {
+                var editPationtForm = new FormEditPatient(selectedPatient);
+                if(editPationtForm.ShowDialog() == DialogResult.OK)
+                {
+                    LoadPatients();
+                }
             }
         }
     }
