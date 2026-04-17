@@ -72,12 +72,61 @@ namespace MedicaN
         private void buttonEditPatient_Click(object sender, EventArgs e)
         {
             var selectedPatient = (Patient)patientBindingSource.Current;
-            if(selectedPatient is not null)
+            if (selectedPatient is not null)
             {
                 var editPationtForm = new FormEditPatient(selectedPatient);
-                if(editPationtForm.ShowDialog() == DialogResult.OK)
+                if (editPationtForm.ShowDialog() == DialogResult.OK)
                 {
+                    var editedPatient = editPationtForm.Patient;
+                    UpdatePatientInDb(editedPatient);
                     LoadPatients();
+                }
+            }
+        }
+
+        private void UpdatePatientInDb(Patient editedPatient)
+        {
+            using (var context = new HealthNdbContext())
+            {
+                var patientToUpdate = context.Patients.Find(editedPatient.PatientId);
+                if (patientToUpdate is not null)
+                {
+                    patientToUpdate.FirstName = editedPatient.FirstName;
+                    patientToUpdate.LastName = editedPatient.LastName;
+                    patientToUpdate.Phone = editedPatient.Phone;
+                    patientToUpdate.Gender = editedPatient.Gender;
+                    patientToUpdate.Pin = editedPatient.Pin;
+                    context.SaveChanges();
+                }
+            }
+        }
+
+        private void buttonDeletePatient_Click(object sender, EventArgs e)
+        {
+            var patientForDelete = (Patient)patientBindingSource.Current;
+            if(patientForDelete is not null)
+            {
+                var deletePatientForm = new FormDeletePatient(patientForDelete);
+                if(deletePatientForm.ShowDialog() == DialogResult.OK)
+                {
+                    DeletePatientFromDb(patientForDelete);
+                    LoadPatients();
+                }
+            }
+            
+        }
+
+        private void DeletePatientFromDb(Patient patientForDelete)
+        {
+            using (var context = new HealthNdbContext())
+            {
+                //context.Remove(patientForDelete);
+                //context.SaveChanges();
+                var patient = context.Patients.Find(patientForDelete.PatientId);
+                if (patient is not null)
+                {
+                    context.Remove(patient);
+                    context.SaveChanges();
                 }
             }
         }

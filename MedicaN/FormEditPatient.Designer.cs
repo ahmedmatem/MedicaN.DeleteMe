@@ -70,6 +70,7 @@
             buttonEdit.TabIndex = 22;
             buttonEdit.Text = "Редактиране";
             buttonEdit.UseVisualStyleBackColor = true;
+            buttonEdit.Click += buttonEdit_Click;
             // 
             // labelPhone
             // 
@@ -164,6 +165,7 @@
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FormEditPatient";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Редактиране на пациент";
             Load += FormEditPatient_Load;
             ResumeLayout(false);

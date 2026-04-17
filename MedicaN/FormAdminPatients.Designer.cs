@@ -135,6 +135,7 @@
             buttonDeletePatient.TabIndex = 4;
             buttonDeletePatient.Text = "Изтрий пациент";
             buttonDeletePatient.UseVisualStyleBackColor = true;
+            buttonDeletePatient.Click += buttonDeletePatient_Click;
             // 
             // FormAdminPatients
             // 
